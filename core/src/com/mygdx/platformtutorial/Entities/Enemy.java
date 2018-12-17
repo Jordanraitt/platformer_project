@@ -10,7 +10,7 @@ import com.mygdx.platformtutorial.World.TileType;
 public class Enemy extends Entity {
 
     private static final int SPEED = 50;
-    private boolean movingLeft = true;
+    private boolean movingLeft = false;
     private boolean isCollidable = true;
 
     Texture image;
@@ -23,30 +23,29 @@ public class Enemy extends Entity {
 
     @Override
     public void update(float deltaTime, float gravity) {
-        if(!movingLeft)
-//            if(map.getTileTypeByCoordinate(0, (int)(getX() + 32), (int)(getY() - 32)) != TileType.FLOOR){
-//                movingLeft = true;
-//            }
-            moveX(SPEED * deltaTime);
-
-        if(movingLeft) {
-            if(map.getTileTypeByCoordinate(0, (int)(getX() - 32), (int)(getY() + 32)) != TileType.FLOOR){
-//                movingLeft = true;
-//            }
-            moveX(-SPEED * deltaTime);
-        }
         super.update(deltaTime, gravity);
 
-    }}
+        if(!movingLeft) {
+            if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth())) {
+                movingLeft = true;
+            }
+            moveX(SPEED * deltaTime);
+        }
+
+
+        if(movingLeft) {
+            if(!map.isEnemyOnFloor(getX() - 2, getY() - 32, getHeight(), getWidth())) {
+                movingLeft = false;
+            }
+            moveX(-SPEED * deltaTime);
+        }
+
+
+    }
 
         @Override
     public void render(SpriteBatch batch) {
         batch.draw(image, position.x, position.y, getWidth(), getHeight());
     }
-
-
-
-
-
 
 }
