@@ -36,6 +36,7 @@ public class Player extends Entity {
         batch.draw(image, position.x, position.y, getWidth(), getHeight());
     }
 
+
     public void jump(float deltaTime) {
         if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
             this.velocityY += JUMP_VELOCITY * getWeight();

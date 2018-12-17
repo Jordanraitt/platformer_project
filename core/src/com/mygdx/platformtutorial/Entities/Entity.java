@@ -20,6 +20,7 @@ public abstract class Entity {
 
     public void update(float deltaTime, float gravity) {
         float newY = position.y;
+        
 
         this.velocityY += gravity * deltaTime * getWeight();
         newY += this.velocityY * deltaTime;
