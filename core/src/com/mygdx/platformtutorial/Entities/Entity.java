@@ -11,6 +11,7 @@ public abstract class Entity {
     protected float velocityY = 0;
     protected GameMap map;
     protected boolean grounded = false;
+    protected boolean doubleJump = false ;
 
 
     public Entity(float x, float y, EntityType type, GameMap map) {

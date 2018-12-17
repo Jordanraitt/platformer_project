@@ -8,8 +8,8 @@ import com.mygdx.platformtutorial.World.GameMap;
 
 public class Player extends Entity {
 
-    private static final int SPEED = 80;
-    private static final int JUMP_VELOCITY = 5;
+    private static final int SPEED = 120;
+    private static final int JUMP_VELOCITY = 9;
 
     Texture image;
 
@@ -22,10 +22,15 @@ public class Player extends Entity {
 
     @Override
     public void update(float deltaTime, float gravity) {
-        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded))
+        if (grounded)
+            doubleJump = false;
+        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
             this.velocityY += JUMP_VELOCITY * getWeight();
-        else if (((Gdx.input.isKeyPressed(Keys.W))  && !grounded && this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.W))  && !grounded && this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.W))  && !grounded && this.velocityY > 0))
+
+        } else if (((Gdx.input.isKeyPressed(Keys.SPACE))  && !grounded && this.velocityY > 0 && this.velocityY < 15) || ((Gdx.input.isKeyPressed(Keys.W))  && !grounded && this.velocityY > 0 && this.velocityY < 15) || ((Gdx.input.isKeyPressed(Keys.UP))  && !grounded && this.velocityY > 0 && this.velocityY < 15)) {
             this.velocityY += JUMP_VELOCITY * getWeight() * deltaTime;
+        }
+
 
         super.update(deltaTime, gravity); //Apply gravity
 

@@ -2,7 +2,7 @@ package com.mygdx.platformtutorial.Entities;
 
 public enum EntityType {
 
-    PLAYER("player", 14, 32, 40);
+    PLAYER("player", 22, 48, 12);
 
     private String id;
     private int width, height;
@@ -29,5 +29,9 @@ public enum EntityType {
 
     public float getWeight() {
         return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 }

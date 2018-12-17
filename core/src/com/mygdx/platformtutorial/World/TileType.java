@@ -5,13 +5,19 @@ import java.util.HashMap;
 public enum TileType {
 
     GRASS(1, true, "Grass"),
-    DIRT(2, true, "Dirt"),
-    SKY(3, false, "Sky"),
+    DIRT(2, false, "Dirt"),
+    SKY(3, true, "Sky"),
     LAVA(4, true, "Lava"),
-    CLOUD(5, true, "Cloud"),
-    STONE(6, true, "Stone");
+    CLOUD(5, false, "Cloud"),
+    STONE(6, true, "Stone"),
+    LOL(7, true, "Test"),
+    LOL1(8, false, "Test"),
+    LOL2(9, true, "Test"),
+    LOL3(10, true, "Test"),
+    LOL4(11, true, "Test"),
+    LOL5(12, true, "Test");
 
-    public static final int TILE_SIZE = 16;
+    public static final int TILE_SIZE = 32;
 
     private int id;
     private boolean collidable;
