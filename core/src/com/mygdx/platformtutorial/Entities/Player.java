@@ -10,6 +10,7 @@ public class Player extends Entity {
 
     private static final int SPEED = 100;
     private static final int JUMP_VELOCITY = 6;
+    private boolean isDead = false;
 
     Texture image;
 
