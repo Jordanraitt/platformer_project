@@ -87,7 +87,5 @@ public abstract class GameMap {
           return this.getHeight() * TileType.TILE_SIZE;
      }
 
-//     public int getEnemyWidth() {
-//          return
-//     }
+
 }

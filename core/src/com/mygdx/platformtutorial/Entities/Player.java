@@ -22,31 +22,41 @@ public class Player extends Entity {
 
     @Override
     public void update(float deltaTime, float gravity) {
-
-        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
-            this.velocityY += JUMP_VELOCITY * getWeight();
-        } else if (((Gdx.input.isKeyPressed(Keys.SPACE)) && !grounded &&this.velocityY >0 )|| ((Gdx.input.isKeyPressed(Keys.W))&&!grounded &&this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.UP)) && !grounded &&this.velocityY > 0)) {
-            this.velocityY += JUMP_VELOCITY * getWeight() * deltaTime;
-        }
+        jump(deltaTime);
 
         super.update(deltaTime, gravity); //Apply gravity
 
-        if ((Gdx.input.isKeyPressed(Keys.LEFT) && grounded) || (Gdx.input.isKeyPressed(Keys.A) && grounded))
-            moveX((-SPEED - 20) * deltaTime);
+        moveLeft(deltaTime);
 
-        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && grounded) || (Gdx.input.isKeyPressed(Keys.D) && grounded))
-            moveX((SPEED + 20) * deltaTime);
-
-        if ((Gdx.input.isKeyPressed(Keys.LEFT) && !grounded) || (Gdx.input.isKeyPressed(Keys.A) && !grounded))
-            moveX((-SPEED + 10) * deltaTime);
-
-        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && !grounded) || (Gdx.input.isKeyPressed(Keys.D) && !grounded))
-            moveX((SPEED - 10) * deltaTime);
-
+        moveRight(deltaTime);
     }
 
     @Override
     public void render(SpriteBatch batch) {
         batch.draw(image, position.x, position.y, getWidth(), getHeight());
+    }
+
+    public void jump(float deltaTime) {
+        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
+            this.velocityY += JUMP_VELOCITY * getWeight();
+        } else if (((Gdx.input.isKeyPressed(Keys.SPACE)) && !grounded &&this.velocityY >0 )|| ((Gdx.input.isKeyPressed(Keys.W))&&!grounded &&this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.UP)) && !grounded &&this.velocityY > 0)) {
+            this.velocityY += JUMP_VELOCITY * getWeight() * deltaTime;
+        }
+    }
+
+    public void moveLeft(float deltaTime) {
+        if ((Gdx.input.isKeyPressed(Keys.LEFT) && grounded) || (Gdx.input.isKeyPressed(Keys.A) && grounded))
+            moveX((-SPEED - 20) * deltaTime);
+
+        if ((Gdx.input.isKeyPressed(Keys.LEFT) && !grounded) || (Gdx.input.isKeyPressed(Keys.A) && !grounded))
+            moveX((-SPEED + 10) * deltaTime);
+    }
+
+    public void moveRight(float deltaTime) {
+        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && grounded) || (Gdx.input.isKeyPressed(Keys.D) && grounded))
+            moveX((SPEED + 20) * deltaTime);
+
+        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && !grounded) || (Gdx.input.isKeyPressed(Keys.D) && !grounded))
+            moveX((SPEED - 10) * deltaTime);
     }
 }
