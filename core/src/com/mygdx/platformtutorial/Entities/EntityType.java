@@ -3,7 +3,7 @@ package com.mygdx.platformtutorial.Entities;
 public enum EntityType {
 
     PLAYER("player", 16, 32, 25),
-    ENEMY("enemy", 8, 16, 0);
+    ENEMY("enemy", 24, 24, 0);
 
     private String id;
     private int width, height;
