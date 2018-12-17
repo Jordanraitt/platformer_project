@@ -22,12 +22,14 @@ public class Enemy extends Entity {
     @Override
     public void update(float deltaTime, float gravity) {
         if(!movingLeft)
+            while (TileType)
             moveX(SPEED * deltaTime);
+
         if(movingLeft) {
             moveX(-SPEED * deltaTime);
         }
         super.update(deltaTime, gravity);
-        
+
     }
 
         @Override
