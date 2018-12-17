@@ -15,8 +15,8 @@ public abstract class GameMap {
      public GameMap() {
           entities = new ArrayList<Entity>();
           entities.add(new Player(65, 65, this));
-//          entities.add(new Enemy(80, 100, this));
-//          entities.add(new Enemy(90, 100, this));
+          entities.add(new Enemy(400, 65, this));
+          entities.add(new Enemy(90, 65, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -52,6 +52,19 @@ public abstract class GameMap {
                }
           }
           return false;
+     }
+
+     public boolean isEnemyOnFloor(float x, float y, int width, int height){
+          for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
+               for(int col = (int) (x/TileType.TILE_SIZE); col < Math.ceil((x + width) / TileType.TILE_SIZE); col++){
+                    for (int layer = 0; layer < getLayers(); layer++) {
+                         TileType type = getTileTypeByCoordinate(layer, col, row);
+                         if (type != null && type.getId() == 2)
+                              return false;
+                    }
+               }
+          }
+          return true;
      }
 
      public boolean doesRectCollideWithMap(float x, float y, int width, int height) {
