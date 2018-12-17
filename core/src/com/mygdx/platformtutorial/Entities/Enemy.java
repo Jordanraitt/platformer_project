@@ -26,8 +26,8 @@ public class Enemy extends Entity {
         if(movingLeft) {
             moveX(-SPEED * deltaTime);
         }
-
-
+        super.update(deltaTime, gravity);
+        
     }
 
         @Override
