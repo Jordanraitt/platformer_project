@@ -22,7 +22,7 @@ public class Player extends Entity {
     @Override
     public void update(float deltaTime, float gravity) {
 
-        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded && count == 0) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded && count == 0) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded && count == 0)) {
+        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
             this.velocityY += JUMP_VELOCITY * getWeight();
         } else if (((Gdx.input.isKeyPressed(Keys.SPACE)) && !grounded &&this.velocityY >0 )|| ((Gdx.input.isKeyPressed(Keys.W))&&!grounded &&this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.UP)) && !grounded &&this.velocityY > 0)) {
             this.velocityY += JUMP_VELOCITY * getWeight() * deltaTime;
