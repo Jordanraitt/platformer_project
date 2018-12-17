@@ -37,10 +37,10 @@ public class Player extends Entity {
             moveX((SPEED + 20) * deltaTime);
 
         if ((Gdx.input.isKeyPressed(Keys.LEFT) && !grounded) || (Gdx.input.isKeyPressed(Keys.A) && !grounded))
-            moveX((-SPEED + 20) * deltaTime);
+            moveX((-SPEED + 10) * deltaTime);
 
         if ((Gdx.input.isKeyPressed(Keys.RIGHT) && !grounded) || (Gdx.input.isKeyPressed(Keys.D) && !grounded))
-            moveX((SPEED - 20) * deltaTime);
+            moveX((SPEED - 10) * deltaTime);
 
     }
 
