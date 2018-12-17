@@ -8,39 +8,40 @@ import com.mygdx.platformtutorial.World.GameMap;
 
 public class Player extends Entity {
 
-    private static final int SPEED = 120;
-    private static final int JUMP_VELOCITY = 9;
+    private static final int SPEED = 100;
+    private static final int JUMP_VELOCITY = 6;
 
     Texture image;
 
 
-
-    public Player (float x, float y, GameMap map) {
+    public Player(float x, float y, GameMap map) {
         super(x, y, EntityType.PLAYER, map);
         image = new Texture("player.png");
     }
 
     @Override
     public void update(float deltaTime, float gravity) {
-        if (grounded)
-            doubleJump = false;
-        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {
-            this.velocityY += JUMP_VELOCITY * getWeight();
 
-        } else if (((Gdx.input.isKeyPressed(Keys.SPACE))  && !grounded && this.velocityY > 0 && this.velocityY < 15) || ((Gdx.input.isKeyPressed(Keys.W))  && !grounded && this.velocityY > 0 && this.velocityY < 15) || ((Gdx.input.isKeyPressed(Keys.UP))  && !grounded && this.velocityY > 0 && this.velocityY < 15)) {
+        if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded && count == 0) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded && count == 0) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded && count == 0)) {
+            this.velocityY += JUMP_VELOCITY * getWeight();
+        } else if (((Gdx.input.isKeyPressed(Keys.SPACE)) && !grounded &&this.velocityY >0 )|| ((Gdx.input.isKeyPressed(Keys.W))&&!grounded &&this.velocityY > 0) || ((Gdx.input.isKeyPressed(Keys.UP)) && !grounded &&this.velocityY > 0)) {
             this.velocityY += JUMP_VELOCITY * getWeight() * deltaTime;
         }
 
-
         super.update(deltaTime, gravity); //Apply gravity
 
-        if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A))
-            moveX(-SPEED * deltaTime);
+        if ((Gdx.input.isKeyPressed(Keys.LEFT) && grounded) || (Gdx.input.isKeyPressed(Keys.A) && grounded))
+            moveX((-SPEED - 20) * deltaTime);
 
+        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && grounded) || (Gdx.input.isKeyPressed(Keys.D) && grounded))
+            moveX((SPEED + 20) * deltaTime);
 
-        if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed((Keys.D))) {
-            moveX(SPEED * deltaTime);
-        }
+        if ((Gdx.input.isKeyPressed(Keys.LEFT) && !grounded) || (Gdx.input.isKeyPressed(Keys.A) && !grounded))
+            moveX((-SPEED + 20) * deltaTime);
+
+        if ((Gdx.input.isKeyPressed(Keys.RIGHT) && !grounded) || (Gdx.input.isKeyPressed(Keys.D) && !grounded))
+            moveX((SPEED - 20) * deltaTime);
+
     }
 
     @Override

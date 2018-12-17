@@ -2,7 +2,7 @@ package com.mygdx.platformtutorial.Entities;
 
 public enum EntityType {
 
-    PLAYER("player", 22, 48, 12);
+    PLAYER("player", 16, 32, 25);
 
     private String id;
     private int width, height;

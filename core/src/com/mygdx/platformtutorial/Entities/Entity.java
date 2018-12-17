@@ -11,7 +11,7 @@ public abstract class Entity {
     protected float velocityY = 0;
     protected GameMap map;
     protected boolean grounded = false;
-    protected boolean doubleJump = false ;
+    protected int count = 0;
 
 
     public Entity(float x, float y, EntityType type, GameMap map) {
@@ -29,7 +29,6 @@ public abstract class Entity {
         if (map.doesRectCollideWithMap(position.x, newY, getWidth(), getHeight())) {
             if (velocityY < 0) {
                 this.position.y = (float) Math.floor(position.y);
-
                 grounded = true;
             }
             this.velocityY = 0;
@@ -77,5 +76,13 @@ public abstract class Entity {
 
     public float getWeight(){
         return type.getWeight();
+    }
+
+    public void setCount(int number) {
+        this.count = number;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 }
