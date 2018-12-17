@@ -9,6 +9,7 @@ import com.mygdx.platformtutorial.World.GameMap;
 public class Enemy extends Entity {
 
     private static final int SPEED = 50;
+    private boolean movingLeft = false;
 
     Texture image;
 
@@ -20,6 +21,13 @@ public class Enemy extends Entity {
 
     @Override
     public void update(float deltaTime, float gravity) {
+        if(!movingLeft)
+            moveX(SPEED * deltaTime);
+        if(movingLeft) {
+            moveX(-SPEED * deltaTime);
+        }
+
+
     }
 
         @Override
