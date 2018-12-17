@@ -58,6 +58,10 @@ public abstract class GameMap {
      public abstract int getHeight();
      public abstract int getLayers();
 
+     public ArrayList<Entity> getEntities(){
+          return this.entities;
+     }
+
      public int getPixelWidth() {
           return this.getWidth() * TileType.TILE_SIZE;
      }
