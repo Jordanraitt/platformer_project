@@ -11,8 +11,6 @@ public abstract class Entity {
     protected float velocityY = 0;
     protected GameMap map;
     protected boolean grounded = false;
-    protected int count = 0;
-
 
     public Entity(float x, float y, EntityType type, GameMap map) {
         this.position = new Vector2(x, y);
@@ -20,7 +18,7 @@ public abstract class Entity {
         this.map = map;
     }
 
-    public void update (float deltaTime, float gravity) {
+    public void update(float deltaTime, float gravity) {
         float newY = position.y;
 
         this.velocityY += gravity * deltaTime * getWeight();
@@ -36,13 +34,18 @@ public abstract class Entity {
             this.position.y = newY;
             grounded = false;
         }
+
+        if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
+            position.x = 65;
+            position.y = 65;
+        }
     }
 
-    public abstract void render (SpriteBatch batch);
+    public abstract void render(SpriteBatch batch);
 
     protected void moveX(float amount) {
         float newX = position.x + amount;
-        if(!map.doesRectCollideWithMap(newX, position.y, getWidth(), getHeight()))
+        if (!map.doesRectCollideWithMap(newX, position.y, getWidth(), getHeight()))
             this.position.x = newX;
     }
 
@@ -50,7 +53,7 @@ public abstract class Entity {
         return position;
     }
 
-    public float getX(){
+    public float getX() {
         return position.x;
     }
 
@@ -66,23 +69,16 @@ public abstract class Entity {
         return grounded;
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return type.getWidth();
     }
 
-    public int getHeight(){
+    public int getHeight() {
         return type.getHeight();
     }
 
-    public float getWeight(){
+    public float getWeight() {
         return type.getWeight();
     }
 
-    public void setCount(int number) {
-        this.count = number;
-    }
-
-    public int getCount() {
-        return this.count;
-    }
 }

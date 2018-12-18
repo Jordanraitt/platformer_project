@@ -2,6 +2,7 @@ package com.mygdx.platformtutorial.World;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.platformtutorial.Entities.Enemy;
 import com.mygdx.platformtutorial.Entities.Entity;
 import com.mygdx.platformtutorial.Entities.Player;
 
@@ -14,6 +15,8 @@ public abstract class GameMap {
      public GameMap() {
           entities = new ArrayList<Entity>();
           entities.add(new Player(65, 65, this));
+          entities.add(new Enemy(400, 65, this));
+          entities.add(new Enemy(90, 65, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -36,6 +39,33 @@ public abstract class GameMap {
 
 //     Gets a tile at its coordinate within the map at a specified layer.
      public abstract TileType getTileTypeByCoordinate(int layer, int col, int row);
+
+
+     public boolean doesRectCollideWithSpikes(float x, float y, int width, int height){
+          for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
+               for(int col = (int) (x/TileType.TILE_SIZE); col < Math.ceil((x + width) / TileType.TILE_SIZE); col++){
+                    for (int layer = 0; layer < getLayers(); layer++) {
+                         TileType type = getTileTypeByCoordinate(layer, col, row);
+                         if (type != null && type.doesKill())
+                              return true;
+                    }
+               }
+          }
+          return false;
+     }
+
+     public boolean isEnemyOnFloor(float x, float y, int width, int height){
+          for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
+               for(int col = (int) (x/TileType.TILE_SIZE); col < Math.ceil((x + width) / TileType.TILE_SIZE); col++){
+                    for (int layer = 0; layer < getLayers(); layer++) {
+                         TileType type = getTileTypeByCoordinate(layer, col, row);
+                         if (type != null && type.getId() == 2)
+                              return false;
+                    }
+               }
+          }
+          return true;
+     }
 
      public boolean doesRectCollideWithMap(float x, float y, int width, int height) {
           if (x < 0 || y < 0 || x + width > getPixelWidth() || y + height > getPixelHeight())
@@ -69,4 +99,6 @@ public abstract class GameMap {
      public int getPixelHeight() {
           return this.getHeight() * TileType.TILE_SIZE;
      }
+
+
 }
