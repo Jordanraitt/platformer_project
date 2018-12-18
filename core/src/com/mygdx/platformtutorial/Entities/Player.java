@@ -96,6 +96,12 @@ public class Player extends Entity {
         moveLeft(deltaTime);
 
         moveRight(deltaTime);
+
+//        if (map.doesPlayerCollideWithEnemy(position.x, position.y, getWidth(), getHeight())){
+//            position.x = 65;
+//            position.y = 65;
+//        }
+
     }
 
     @Override
@@ -104,7 +110,10 @@ public class Player extends Entity {
 //        TextureRegion currentFrame = idleAnimation.getKeyFrame(elapsedTime,true);
         batch.draw(this.getFrame(elapsedTime), position.x, position.y);
 
+//        System.out.println("position.x = " + position.x);
+//        System.out.println("position.y = " + position.y);
     }
+
 
     public void jump(float deltaTime) {
         if ((Gdx.input.isKeyPressed(Keys.SPACE) && grounded) || ((Gdx.input.isKeyPressed(Keys.UP) && grounded) || ((Gdx.input.isKeyPressed(Keys.W))) && grounded)) {

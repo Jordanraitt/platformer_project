@@ -34,11 +34,13 @@ public abstract class Entity {
             this.position.y = newY;
             grounded = false;
         }
+        
+//        if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
+//            position.x = 65;
+//            position.y = 65;
+//        }
 
-        if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
-            position.x = 65;
-            position.y = 65;
-        }
+
     }
 
     public abstract void render(SpriteBatch batch);
