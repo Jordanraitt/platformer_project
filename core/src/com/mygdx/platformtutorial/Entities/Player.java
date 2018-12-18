@@ -13,7 +13,7 @@ public class Player extends Entity {
 
 //    private Animation idleAnimation;
 //    private Animation jumpingAnimation;
-//    private Animation tunningAnimation;
+//    private Animation runningAnimation;
 
     public enum State { FALLING, JUMPING, STANDING, RUNNING};
     private Animation<TextureRegion> idleAnimation;
@@ -39,17 +39,19 @@ public class Player extends Entity {
         currentState = State.STANDING;
         previousState = State.STANDING;
 
-        ///////////////////////FRAME ANIMATION
+///////////////////////FRAME ANIMATIONS
+//         SINGLE LINE FRAME ANIMATION
+
 //        Array<TextureRegion> frames = new Array<TextureRegion>();
-//        TextureRegion[][] tmpFrames = TextureRegion.split(idleImage, 18, 35);
-//        TextureRegion[] frames = new TextureRegion[6];
-//        int index = 0;
-//        for (int i = 0; i < 3; i++) {
-//            for (int j = 0; j < 2; j++) {
-//                frames[index++] = tmpFrames[j][i];
-//            }
-//        }
-//        frames.add( new TextureRegion(idleImage));
+//        for (int i = 0; i < 6; i++)
+//             frames.add(new TextureRegion(get Texture(), i * 18, 0, 35));
+//        runningAnimation = new Animation(0.1f, frames);
+//        frames.clear();
+//
+//        idleAnimation = new TextureRegion(getTexture(0,18,0,35);
+//
+//         DOUBLE LINE FRAME ANIMATION
+
         TextureRegion[][] tmpFrames = TextureRegion.split(idleImage, 18, 35);
         TextureRegion[] idleFrames = new TextureRegion[6];
         int index = 0;
@@ -58,7 +60,6 @@ public class Player extends Entity {
                 idleFrames[index++] = tmpFrames[j][i];
             }
         }
-
         idleAnimation = new Animation(1f/6f, idleFrames);
 ///////////////////////
     }
@@ -83,8 +84,6 @@ public class Player extends Entity {
             runningRight = true;
         }
 
-        elapsedTime = currentState == previousState ? elapsedTime + deltaTime : 0;
-        previousState = currentState;
         return region;
     }
 
@@ -102,7 +101,7 @@ public class Player extends Entity {
     @Override
     public void render(SpriteBatch batch) {
         elapsedTime += Gdx.graphics.getDeltaTime();
-        TextureRegion currentFrame = idleAnimation.getKeyFrame(elapsedTime,true);
+//        TextureRegion currentFrame = idleAnimation.getKeyFrame(elapsedTime,true);
         batch.draw(this.getFrame(elapsedTime), position.x, position.y);
 
     }
