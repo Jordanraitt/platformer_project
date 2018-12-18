@@ -4,17 +4,17 @@ import java.util.HashMap;
 
 public enum TileType {
 
-    STONE(1, true, "Stone", false),
-    DARK(2, false, "Dark", false),
-    WALLV(3, true, "Wall Vertical", false),
-    BLCORNER(4, true, "Bottom Left Corner", false),
-    COLUMN(5, false, "Column", false),
-    FLOOR(6, true, "Floor", false),
-    TLCORNER(7, true, "Top Left Corner", false),
-    CANDLE(8, false, "Candle", false),
-    WALLVI(9, true, "Inversed Vertical Wall", false),
-    BRCORNER(10, true, "Bottom Right Corner", false),
-    TRCORNER(11, true, "Top Right Corner", false),
+    STONE(1, true, "Stone"),
+    DARK(2, false, "Dark"),
+    WALLV(3, true, "Wall Vertical"),
+    BLCORNER(4, true, "Bottom Left Corner"),
+    COLUMN(5, false, "Column"),
+    FLOOR(6, true, "Floor"),
+    TLCORNER(7, true, "Top Left Corner"),
+    CANDLE(8, false, "Candle"),
+    WALLVI(9, true, "Inversed Vertical Wall"),
+    BRCORNER(10, true, "Bottom Right Corner"),
+    TRCORNER(11, true, "Top Right Corner"),
     SPIKES(12, false, "Spikes", true);
 
     public static final int TILE_SIZE = 32;
@@ -24,9 +24,9 @@ public enum TileType {
     private String name;
     private boolean doesKill;
 
-//    private TileType (int id, boolean collidable, String name) {
-//        this(id, collidable, name, false);
-//    }
+    private TileType (int id, boolean collidable, String name) {
+        this(id, collidable, name, false);
+    }
 
     private TileType (int id, boolean collidable, String name, boolean doesKill) {
         this.id = id;
