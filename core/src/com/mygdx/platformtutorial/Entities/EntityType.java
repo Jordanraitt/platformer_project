@@ -4,7 +4,7 @@ public enum EntityType {
 
     PLAYER("player", 16, 32, 25),
     ENEMY("enemy", 24, 24, 25),
-    COIN("coin", 16, 16, 25);
+    COIN("coin", 16, 16, 0);
 
     private String id;
     private int width, height;

@@ -3,10 +3,7 @@ package com.mygdx.platformtutorial.World;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.platformtutorial.Entities.Enemy;
-import com.mygdx.platformtutorial.Entities.Entity;
-import com.mygdx.platformtutorial.Entities.EntityType;
-import com.mygdx.platformtutorial.Entities.Player;
+import com.mygdx.platformtutorial.Entities.*;
 
 import java.util.ArrayList;
 
@@ -27,6 +24,7 @@ public abstract class GameMap {
           entities.add(new Enemy(601, 992, this));
           entities.add(new Enemy(600, 1216, this));
           entities.add(new Enemy(629, 864, this));
+          entities.add(new Coin(100, 80, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -50,6 +48,8 @@ public abstract class GameMap {
 //     Gets a tile at its coordinate within the map at a specified layer.
      public abstract TileType getTileTypeByCoordinate(int layer, int col, int row);
 
+//     public boolean doesPlayerCollideWithCoin(float x, float y, int width, int height){
+//     }
 
      public boolean doesPlayerCollideWithEnemy(float x, float y, int width, int height){
           for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
