@@ -21,7 +21,6 @@ public abstract class Entity {
     public void update(float deltaTime, float gravity) {
         float newY = position.y;
 
-
         this.velocityY += gravity * deltaTime * getWeight();
         newY += this.velocityY * deltaTime;
 
@@ -35,7 +34,7 @@ public abstract class Entity {
             this.position.y = newY;
             grounded = false;
         }
-
+        
         if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
             position.x = 65;
             position.y = 65;

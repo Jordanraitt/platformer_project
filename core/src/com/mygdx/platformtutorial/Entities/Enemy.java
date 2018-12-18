@@ -26,7 +26,7 @@ public class Enemy extends Entity {
         super.update(deltaTime, gravity);
 
         if(!movingLeft) {
-            if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() + 2, getY(), getHeight(), getWidth())) {
+            if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX(), getY(), getHeight(), getWidth())) {
                 movingLeft = true;
             }
             moveX(SPEED * deltaTime);
@@ -34,7 +34,7 @@ public class Enemy extends Entity {
 
 
         if(movingLeft) {
-            if(!map.isEnemyOnFloor(getX() - 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() + 2, getY(), getHeight(), getWidth()))  {
+            if(!map.isEnemyOnFloor(getX() - 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX(), getY(), getHeight(), getWidth()))  {
                 movingLeft = false;
             }
             moveX(-SPEED * deltaTime);
