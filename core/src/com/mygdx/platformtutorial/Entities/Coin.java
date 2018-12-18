@@ -11,7 +11,7 @@ public class Coin extends Entity {
 
     public Coin(float x, float y, GameMap map) {
         super(x, y, EntityType.COIN, map);
-        image = new Texture("coin.gif");
+        image = new Texture("coin.png");
     }
 
     @Override
