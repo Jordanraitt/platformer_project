@@ -3,22 +3,39 @@ package com.mygdx.platformtutorial.Entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.platformtutorial.World.GameMap;
 import com.mygdx.platformtutorial.World.TileType;
 
 public class Enemy extends Entity {
 
+    private Animation<TextureRegion> walkAnimation;
     private static final int SPEED = 50;
     private boolean movingLeft = false;
     private boolean canKill = true;
-
-    Texture image;
+    private float elapsedTime;
+    Texture walkImage;
 
 
     public Enemy(float x, float y, GameMap map) {
         super(x, y, EntityType.ENEMY, map);
-        image = new Texture("enemy.png");
+        walkImage = new Texture("enemyWalk.png");
+        elapsedTime = 0;
+
+
+        TextureRegion[][] wFrames = TextureRegion.split(walkImage, 24, 24);
+        TextureRegion[] walkFrames = new TextureRegion[4];
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 1; j++) {
+                walkFrames[index++] = wFrames[j][i];
+            }
+        }
+
+        walkAnimation = new Animation(1f/4f, walkFrames);
+
     }
 
     @Override
@@ -45,7 +62,9 @@ public class Enemy extends Entity {
 
         @Override
     public void render(SpriteBatch batch) {
-        batch.draw(image, position.x, position.y, getWidth(), getHeight());
+        elapsedTime += Gdx.graphics.getDeltaTime();
+        TextureRegion currentFrame = walkAnimation.getKeyFrame(elapsedTime,true);
+        batch.draw(currentFrame, position.x, position.y, getWidth(), getHeight());
     }
 
 }
