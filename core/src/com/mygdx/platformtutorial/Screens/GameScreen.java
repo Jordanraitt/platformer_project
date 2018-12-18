@@ -4,11 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.platformtutorial.Entities.Player;
 import com.mygdx.platformtutorial.PlatformerGame;
 import com.mygdx.platformtutorial.World.GameMap;
 import com.mygdx.platformtutorial.World.TileType;
 import com.mygdx.platformtutorial.World.TiledGameMap;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GameScreen implements Screen {
 
@@ -16,12 +22,20 @@ public class GameScreen implements Screen {
 
     OrthographicCamera camera;
     GameMap gameMap;
+    Texture coinImage;
+    ArrayList<Rectangle> coins;
+    Player player;
 
     public GameScreen(final PlatformerGame gam) {
         this.game = gam;
 
+        coinImage = new Texture(Gdx.files.internal("coin.png"));
+        coins = new ArrayList<Rectangle>();
+
         float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
+
+		player = (Player)(gameMap.getEntities().get(0));
 
 
 		camera = new OrthographicCamera();
@@ -29,7 +43,20 @@ public class GameScreen implements Screen {
 		camera.update();
 
 		gameMap = new TiledGameMap();
+        spawnCoin(80, 80);
+        spawnCoin(100, 80);
+        spawnCoin(120, 80);
     }
+
+    public void spawnCoin(int x, int y){
+        Rectangle coin = new Rectangle();
+        coin.x = x;
+        coin.y = y;
+        coin.width = 16;
+        coin.height = 16;
+        coins.add(coin);
+    }
+
 
     @Override
     public void show() {
@@ -78,6 +105,22 @@ public class GameScreen implements Screen {
             game.setScreen(new GameOverScreen(this.game));
         }
 
+        game.getBatch().begin();
+        for (Rectangle coin : coins){
+            game.getBatch().draw(coinImage, coin.x, coin.y, coin.height, coin.width);
+        }
+        game.getBatch().end();
+
+        Iterator<Rectangle> iter = coins.iterator();
+        while (iter.hasNext()) {
+            Rectangle coin = iter.next();
+            coin.y += 0 * Gdx.graphics.getDeltaTime();
+            if(coin.y < 0)
+                iter.remove();
+            if (coin.overlaps(player)){
+                iter.remove();
+            }
+        }
 
     }
 
@@ -102,6 +145,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        coinImage.dispose();
     }
 }

@@ -24,7 +24,7 @@ public abstract class GameMap {
           entities.add(new Enemy(601, 992, this));
           entities.add(new Enemy(600, 1216, this));
           entities.add(new Enemy(629, 864, this));
-          entities.add(new Coin(100, 80, this));
+//          entities.add(new Coin(100, 80, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -49,6 +49,27 @@ public abstract class GameMap {
      public abstract TileType getTileTypeByCoordinate(int layer, int col, int row);
 
 //     public boolean doesPlayerCollideWithCoin(float x, float y, int width, int height){
+//          for (Entity entity : entities) {
+//               float entityX = entity.getX();
+//               float entityY = entity.getY();
+//               EntityType coin = entity.getType();
+//               if (EntityType.COIN == coin && (entityX < x + 5 && entityX > x - 5) && (entityY < y + 5 && entityY > y - 5)) {
+//                    return true;
+//               }
+//          }
+//          return false;
+//     }
+//
+//     public Entity getCollidedCoin(float x, float y, int width, int height){
+//          for (Entity entity : entities) {
+//               float entityX = entity.getX();
+//               float entityY = entity.getY();
+//               EntityType coin = entity.getType();
+//               if (EntityType.COIN == coin && (entityX < x + 5 && entityX > x - 5) && (entityY < y + 5 && entityY > y - 5)) {
+//                    return entity;
+//               }
+//          }
+//          return null;
 //     }
 
      public boolean doesPlayerCollideWithEnemy(float x, float y, int width, int height){
