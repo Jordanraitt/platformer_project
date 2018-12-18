@@ -78,6 +78,10 @@ public class GameScreen implements Screen {
             game.setScreen(new GameOverScreen(this.game));
         }
 
+        if (gameMap.doesPlayerCollideWithEndButton(playerPosX, playerPosY, gameMap.getEntities().get(0).getWidth(), gameMap.getEntities().get(0).getWidth())) {
+            game.setScreen(new WinScreen(this.game));
+        }
+
 
     }
 
