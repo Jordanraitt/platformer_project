@@ -2,8 +2,10 @@ package com.mygdx.platformtutorial.World;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.mygdx.platformtutorial.Entities.Enemy;
 import com.mygdx.platformtutorial.Entities.Entity;
+import com.mygdx.platformtutorial.Entities.EntityType;
 import com.mygdx.platformtutorial.Entities.Player;
 
 import java.util.ArrayList;
@@ -48,6 +50,19 @@ public abstract class GameMap {
 //     Gets a tile at its coordinate within the map at a specified layer.
      public abstract TileType getTileTypeByCoordinate(int layer, int col, int row);
 
+
+     public boolean doesPlayerCollideWithEnemy(float x, float y, int width, int height){
+          for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
+               for(int col = (int) (x/TileType.TILE_SIZE); col < Math.ceil((x + width) / TileType.TILE_SIZE); col++){
+                    for (Entity entity : entities){
+                         if (EntityType.ENEMY == entity.getType() && ((entity.getX() < x + 5 && entity.getX() > x - 5) && (entity.getY() + entity.getHeight() > y && entity.getY() <= y))){
+                              return true;
+                         }
+                    }
+               }
+          }
+          return false;
+     }
 
      public boolean doesRectCollideWithSpikes(float x, float y, int width, int height){
           for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
