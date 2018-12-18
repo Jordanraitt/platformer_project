@@ -52,6 +52,7 @@ public class Player extends Entity {
         moveLeft(deltaTime);
 
         moveRight(deltaTime);
+
     }
 
     @Override
@@ -60,6 +61,8 @@ public class Player extends Entity {
         TextureRegion currentFrame = idleAnimation.getKeyFrame(elapsedTime,true);
         batch.draw(currentFrame, position.x, position.y);
 
+//        System.out.println("position.x = " + position.x);
+//        System.out.println("position.y = " + position.y);
     }
 
 
