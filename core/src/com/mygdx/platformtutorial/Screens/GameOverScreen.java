@@ -20,7 +20,7 @@ public class GameOverScreen implements Screen {
 
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, w, h);
+        camera.setToOrtho(false, 720, 480);
         camera.update();
     }
 
@@ -38,9 +38,8 @@ public class GameOverScreen implements Screen {
         game.getBatch().setProjectionMatrix(camera.combined);
 
         game.getBatch().begin();
-        game.getFont().draw(game.getBatch(), "GAME OVER ", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-        game.getFont().draw(game.getBatch(), "Hit ENTER to continue!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 - 50);
-        camera.update();
+        game.getFont().draw(game.getBatch(), "GAME OVER ", 100, 150);
+        game.getFont().draw(game.getBatch(), "Hit ENTER to continue!", 100, 100);
         game.getBatch().end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {

@@ -25,7 +25,7 @@ public class GameScreen implements Screen {
 
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w, h);
+		camera.setToOrtho(false, 720, 480);
 		camera.update();
 
 		gameMap = new TiledGameMap();
@@ -81,22 +81,26 @@ public class GameScreen implements Screen {
 
     }
 
+    @Override
     public void resize(int width, int height) {
 
     }
 
+    @Override
     public void pause() {
 
     }
-
+	@Override
     public void resume() {
 
     }
 
+    @Override
     public void hide() {
 
     }
 
+    @Override
     public void dispose() {
 
     }
