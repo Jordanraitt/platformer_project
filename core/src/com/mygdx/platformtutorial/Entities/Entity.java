@@ -35,10 +35,10 @@ public abstract class Entity {
             grounded = false;
         }
 
-        if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
-            position.x = 65;
-            position.y = 65;
-        }
+//        if(map.doesRectCollideWithSpikes(position.x, position.y, getWidth(), getHeight())){
+//            position.x = 65;
+//            position.y = 65;
+//        }
 
 
     }
