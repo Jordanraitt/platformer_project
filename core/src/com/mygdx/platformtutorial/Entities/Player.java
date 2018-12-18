@@ -75,11 +75,11 @@ public class Player extends Entity {
                 region = idleAnimation.getKeyFrame(elapsedTime, true);
         }
 
-        if ((Gdx.input.isKeyPressed(Keys.LEFT) || !runningRight) && !region.isFlipX()){
+        if (((Gdx.input.isKeyPressed(Keys.LEFT) && grounded) || (Gdx.input.isKeyPressed(Keys.A) && grounded) || !runningRight) && !region.isFlipX()){
             region.flip(true, false);
             runningRight = false;
         }
-        else if ((Gdx.input.isKeyPressed(Keys.RIGHT) || runningRight)&& region.isFlipX()) {
+        else if (((Gdx.input.isKeyPressed(Keys.RIGHT) && grounded) || (Gdx.input.isKeyPressed(Keys.D) && grounded) || runningRight)&& region.isFlipX()) {
             region.flip( true, false);
             runningRight = true;
         }
