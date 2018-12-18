@@ -39,6 +39,8 @@ public abstract class Entity {
             position.x = 65;
             position.y = 65;
         }
+
+
     }
 
     public abstract void render(SpriteBatch batch);

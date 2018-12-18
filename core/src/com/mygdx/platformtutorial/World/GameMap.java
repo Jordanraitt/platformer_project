@@ -2,8 +2,10 @@ package com.mygdx.platformtutorial.World;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.mygdx.platformtutorial.Entities.Enemy;
 import com.mygdx.platformtutorial.Entities.Entity;
+import com.mygdx.platformtutorial.Entities.EntityType;
 import com.mygdx.platformtutorial.Entities.Player;
 
 import java.util.ArrayList;
@@ -16,7 +18,15 @@ public abstract class GameMap {
           entities = new ArrayList<Entity>();
           entities.add(new Player(65, 65, this));
           entities.add(new Enemy(400, 65, this));
-          entities.add(new Enemy(90, 65, this));
+          entities.add(new Enemy(503, 352, this));
+          entities.add(new Enemy(800, 65, this));
+          entities.add(new Enemy(65, 290, this));
+          entities.add(new Enemy(1480, 256, this));
+          entities.add(new Enemy(1086, 352, this));
+          entities.add(new Enemy(186, 960, this));
+          entities.add(new Enemy(601, 992, this));
+          entities.add(new Enemy(600, 1216, this));
+          entities.add(new Enemy(629, 864, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -40,6 +50,23 @@ public abstract class GameMap {
 //     Gets a tile at its coordinate within the map at a specified layer.
      public abstract TileType getTileTypeByCoordinate(int layer, int col, int row);
 
+
+     public boolean doesPlayerCollideWithEnemy(float x, float y, int width, int height){
+          for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
+               for(int col = (int) (x/TileType.TILE_SIZE); col < Math.ceil((x + width) / TileType.TILE_SIZE); col++){
+                    for (Entity entity : entities){
+                         float entityX = entity.getX();
+                         float entityY = entity.getY();
+                         EntityType enemy = entity.getType();
+                         int enemyHeight = entity.getHeight();
+                         if (EntityType.ENEMY == enemy && ((entityX < x + 5 && entityX > x - 5) && (entityY + enemyHeight > y && entityY <= y))){
+                              return true;
+                         }
+                    }
+               }
+          }
+          return false;
+     }
 
      public boolean doesRectCollideWithSpikes(float x, float y, int width, int height){
           for (int row = (int) (y/TileType.TILE_SIZE); row < Math.ceil((y + height) / TileType.TILE_SIZE); row++){
