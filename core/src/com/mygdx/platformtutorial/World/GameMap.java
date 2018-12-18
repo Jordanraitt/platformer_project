@@ -67,6 +67,7 @@ public abstract class GameMap {
           return true;
      }
 
+
      public boolean doesRectCollideWithMap(float x, float y, int width, int height) {
           if (x < 0 || y < 0 || x + width > getPixelWidth() || y + height > getPixelHeight())
                return true;
