@@ -25,6 +25,7 @@ public class GameScreen implements Screen {
     Texture coinImage;
     ArrayList<Rectangle> coins;
     Player player;
+    Rectangle playerRec;
 
     public GameScreen(final PlatformerGame gam) {
         this.game = gam;
@@ -46,6 +47,8 @@ public class GameScreen implements Screen {
         spawnCoin(80, 80);
         spawnCoin(100, 80);
         spawnCoin(120, 80);
+
+        convertPlayer(player);
     }
 
     public void spawnCoin(int x, int y){
@@ -55,6 +58,15 @@ public class GameScreen implements Screen {
         coin.width = 16;
         coin.height = 16;
         coins.add(coin);
+    }
+
+    public void convertPlayer(Player player){
+        Rectangle playerRect = new Rectangle();
+        playerRect.x = (int)(player.getX());
+        playerRect.y = (int)(player.getY());
+        playerRect.width = (int)(player.getWidth());
+        playerRect.height = (int)(player.getHeight());
+        playerRec = playerRect;
     }
 
 
@@ -117,7 +129,7 @@ public class GameScreen implements Screen {
             coin.y += 0 * Gdx.graphics.getDeltaTime();
             if(coin.y < 0)
                 iter.remove();
-            if (coin.overlaps(player)){
+            if (coin.overlaps(playerRec)){
                 iter.remove();
             }
         }
