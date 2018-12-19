@@ -40,10 +40,10 @@ public class WinScreen implements Screen {
 
         game.getBatch().begin();
         game.getFont().draw(game.getBatch(), "Congratulations on making it to the top! ", 100, 150);
-        game.getFont().draw(game.getBatch(), "Hit ENTER to return to the Main Menu!!", 100, 100);
+        game.getFont().draw(game.getBatch(), "Hit BACKSPACE to return to the Main Menu!!", 100, 100);
         game.getBatch().end();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
             game.setScreen(new MainMenuScreen(game));
             dispose();
         }
