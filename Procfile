@@ -1,0 +1,1 @@
+web: java -jar /Users/nyallshemingway/codeclan/work_files/projects/platformer_project/core/src/com/mygdx/platformtutorial/PlatformerGame.java
