@@ -1,1 +1,1 @@
-web: java -jar /Users/nyallshemingway/codeclan/work_files/projects/platformer_project/desktop/src/com/mygdx/platformtutorial/desktop/DesktopLauncher.java
+web: java -jar DesktopLauncher.jar DesktopLauncher
