@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.platformtutorial.World.GameMap;
 
+import java.awt.*;
+
 public abstract class Entity {
 
     protected Vector2 position;
@@ -81,6 +83,11 @@ public abstract class Entity {
 
     public float getWeight() {
         return type.getWeight();
+    }
+
+
+    public boolean overlaps (Rectangle r) {
+        return this.getX() < r.x + r.width && this.getX() + this.getWidth() > r.x && this.getY() < r.y + r.height && this.getY() + this.getHeight() > r.y;
     }
 
 }
