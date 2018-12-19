@@ -7,23 +7,24 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.mygdx.platformtutorial.PlatformerGame;
 
-public class MainMenuScreen implements Screen {
-
+public class WinScreen implements Screen {
 
     protected final PlatformerGame game;
     OrthographicCamera camera;
 
-    public MainMenuScreen(PlatformerGame game) {
-        this.game = game;
+    public WinScreen(PlatformerGame game) {
+            this.game = game;
 
-        float w = Gdx.graphics.getWidth();
-        float h = Gdx.graphics.getHeight();
+            float w = Gdx.graphics.getWidth();
+            float h = Gdx.graphics.getHeight();
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 720, 480);
-        camera.update();
+
+            camera = new OrthographicCamera();
+            camera.setToOrtho(false, 720, 480);
+            camera.update();
     }
 
+    @Override
     public void show() {
 
     }
@@ -38,16 +39,17 @@ public class MainMenuScreen implements Screen {
         game.getBatch().setProjectionMatrix(camera.combined);
 
         game.getBatch().begin();
-        game.getFont().draw(game.getBatch(), "Welcome! ", 100, 150);
-        game.getFont().draw(game.getBatch(), "Hit ENTER to start the game!!", 100, 100);
+        game.getFont().draw(game.getBatch(), "Congratulations on making it to the top! ", 100, 150);
+        game.getFont().draw(game.getBatch(), "Hit BACKSPACE to return to the Main Menu!!", 100, 100);
         game.getBatch().end();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
-            game.setScreen(new GameScreen(game));
+        if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
+            game.setScreen(new MainMenuScreen(game));
             dispose();
         }
 
     }
+
     @Override
     public void resize(int width, int height) {
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.platformtutorial.Screens.GameScreen;
+import com.mygdx.platformtutorial.Screens.MainMenuScreen;
 
 public class PlatformerGame extends Game {
 
@@ -20,13 +21,13 @@ public class PlatformerGame extends Game {
 	//	GameMap gameMap;
 
 //	float deltaX, deltaY;
-	
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 
-		this.setScreen(new GameScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 
 	@Override
