@@ -1,5 +1,6 @@
 package com.mygdx.platformtutorial.World;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -13,7 +14,7 @@ public abstract class GameMap {
 
      public GameMap() {
           entities = new ArrayList<Entity>();
-          entities.add(new Player(65, 65, this));
+          entities.add(new Player(, 65, this));
           entities.add(new Enemy(400, 65, this));
           entities.add(new Enemy(503, 352, this));
           entities.add(new Enemy(800, 65, this));
@@ -24,7 +25,6 @@ public abstract class GameMap {
           entities.add(new Enemy(601, 992, this));
           entities.add(new Enemy(600, 1216, this));
           entities.add(new Enemy(629, 864, this));
-//          entities.add(new Coin(100, 80, this));
      }
 
      public void render(OrthographicCamera camera, SpriteBatch batch) {
@@ -53,23 +53,25 @@ public abstract class GameMap {
 //               float entityX = entity.getX();
 //               float entityY = entity.getY();
 //               EntityType coin = entity.getType();
-//               if (EntityType.COIN == coin && (entityX < x + 5 && entityX > x - 5) && (entityY < y + 5 && entityY > y - 5)) {
+//               if (EntityType.COIN == coin && (entityX < x + 14 && entityX > x) && (entityY < y + 30 && entityY > y)) {
+////                    entities.remove(entity);
+////                    entity.update(Gdx.graphics.getDeltaTime(), -9.8f);
 //                    return true;
 //               }
 //          }
 //          return false;
 //     }
 //
-//     public Entity getCollidedCoin(float x, float y, int width, int height){
+//     public void removeCollidedCoin(float x, float y, int width, int height){
 //          for (Entity entity : entities) {
 //               float entityX = entity.getX();
 //               float entityY = entity.getY();
 //               EntityType coin = entity.getType();
-//               if (EntityType.COIN == coin && (entityX < x + 5 && entityX > x - 5) && (entityY < y + 5 && entityY > y - 5)) {
-//                    return entity;
+//               if (EntityType.COIN == coin && (entityX < x + 14 && entityX > x) && (entityY < y + 30 && entityY > y)) {
+//                    entities.remove(entity);
 //               }
 //          }
-//          return null;
+////          return null;
 //     }
 
      public boolean doesPlayerCollideWithEnemy(float x, float y, int width, int height){

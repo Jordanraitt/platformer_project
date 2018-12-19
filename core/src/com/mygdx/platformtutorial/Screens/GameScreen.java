@@ -24,8 +24,8 @@ public class GameScreen implements Screen {
     GameMap gameMap;
     Texture coinImage;
     ArrayList<Rectangle> coins;
-    Player player;
     Rectangle playerRec;
+    int coinsGathered;
 
     public GameScreen(final PlatformerGame gam) {
         this.game = gam;
@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
         float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
-		player = (Player)(gameMap.getEntities().get(0));
+//		player = (Player)(gameMap.getEntities().get(0));
 
 
 		camera = new OrthographicCamera();
@@ -44,11 +44,12 @@ public class GameScreen implements Screen {
 		camera.update();
 
 		gameMap = new TiledGameMap();
-        spawnCoin(80, 80);
+        spawnCoin(180, 80);
         spawnCoin(100, 80);
         spawnCoin(120, 80);
 
-        convertPlayer(player);
+        coinsGathered = 0;
+//        convertPlayer(player);
     }
 
     public void spawnCoin(int x, int y){
@@ -60,14 +61,14 @@ public class GameScreen implements Screen {
         coins.add(coin);
     }
 
-    public void convertPlayer(Player player){
-        Rectangle playerRect = new Rectangle();
-        playerRect.x = (int)(player.getX());
-        playerRect.y = (int)(player.getY());
-        playerRect.width = (int)(player.getWidth());
-        playerRect.height = (int)(player.getHeight());
-        playerRec = playerRect;
-    }
+//    public void convertPlayer(Player player){
+//        Rectangle playerRect = new Rectangle();
+//        playerRect.x = (int)(player.getX());
+//        playerRect.y = (int)(player.getY());
+//        playerRect.width = player.getWidth();
+//        playerRect.height = (player.getHeight();
+//        playerRec = playerRect;
+//    }
 
 
     @Override
@@ -129,10 +130,33 @@ public class GameScreen implements Screen {
             coin.y += 0 * Gdx.graphics.getDeltaTime();
             if(coin.y < 0)
                 iter.remove();
-            if (coin.overlaps(playerRec)){
+            if (gameMap.getEntities().get(0).overlaps(coin)){
+                coinsGathered += 1;
                 iter.remove();
             }
         }
+
+        float positionX = camera.position.x - cameraHalfWidth + 350;
+        float positionY = camera.position.y - cameraHalfHeight + 400;
+
+        if (playerPosX <= cameraHalfWidth) {
+            positionX = 350;
+        }
+        if (playerPosX >= mapWidth - cameraHalfWidth){
+            positionX = mapWidth - 365;
+        }
+
+        if (playerPosY <= cameraHalfHeight) {
+            positionY = 400;
+
+        }
+        if (playerPosY >= (mapHeight - cameraHalfHeight)){
+            positionY = mapHeight - (mapHeight - 410);
+        }
+
+        game.getBatch().begin();
+        game.getFont().draw(game.getBatch(), "Score:" + coinsGathered, positionX, positionY);
+        game.getBatch().end();
 
     }
 
@@ -157,6 +181,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        coinImage.dispose();
+//        coinImage.dispose();
     }
 }

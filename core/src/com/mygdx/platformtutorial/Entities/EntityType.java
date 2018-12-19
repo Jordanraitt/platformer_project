@@ -3,7 +3,7 @@ package com.mygdx.platformtutorial.Entities;
 public enum EntityType {
 
     PLAYER("player", 16, 32, 25),
-    //    COIN("coin", 16, 16, 0),
+    COIN("coin", 16, 16, 0),
     ENEMY("enemy", 24, 24, 25);
 
     private String id;

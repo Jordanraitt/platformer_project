@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.platformtutorial.World.GameMap;
 
+import java.awt.*;
+
 public class Player extends Entity {
 
 //    private Animation idleAnimation;
@@ -102,11 +104,14 @@ public class Player extends Entity {
 //            position.y = 65;
 //        }
 
-//        if (map.doesPlayerCollideWithCoin(position.x, position.y, getWidth(), getHeight())){
-//            map.getEntities().remove(map.getCollidedCoin(position.x, position.y, getWidth(), getHeight()));
-//        }
+//       if(map.doesPlayerCollideWithCoin(position.x, position.y, getWidth(), getHeight())){
+//           map.removeCollidedCoin(position.x, position.y, getWidth(), getHeight());
+////           map.getEntities().remove(coin);
+//       }
 
     }
+
+
 
     @Override
     public void render(SpriteBatch batch) {
