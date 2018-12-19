@@ -24,7 +24,6 @@ public class Enemy extends Entity {
         walkImage = new Texture("enemyWalk.png");
         elapsedTime = 0;
 
-
         TextureRegion[][] wFrames = TextureRegion.split(walkImage, 24, 24);
         TextureRegion[] walkFrames = new TextureRegion[4];
         int index = 0;
@@ -33,9 +32,7 @@ public class Enemy extends Entity {
                 walkFrames[index++] = wFrames[j][i];
             }
         }
-
         walkAnimation = new Animation(1f/4f, walkFrames);
-
     }
 
     public TextureRegion getFrame(float deltaTime) {
@@ -49,7 +46,6 @@ public class Enemy extends Entity {
             region.flip( true, false);
             movingLeft = true;
         }
-
         return region;
     }
 
@@ -68,8 +64,6 @@ public class Enemy extends Entity {
             }
             moveX(-SPEED * deltaTime);
         }
-
-
     }
 
         @Override
