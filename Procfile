@@ -1,1 +1,1 @@
-web: java -jar PlatformerGame.jar PlatformerGame
+web: java -jar desktop-1.0.jar
