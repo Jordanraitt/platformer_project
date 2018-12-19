@@ -38,22 +38,32 @@ public class Enemy extends Entity {
 
     }
 
+    public TextureRegion getFrame(float deltaTime) {
+        TextureRegion region;
+        region = walkAnimation.getKeyFrame(elapsedTime, true);
+
+        if (!movingLeft && !region.isFlipX()) {
+            region.flip(true, false);
+        }
+        else if (movingLeft && region.isFlipX()) {
+            region.flip( true, false);
+            movingLeft = true;
+        }
+
+        return region;
+    }
+
     @Override
     public void update(float deltaTime, float gravity) {
         super.update(deltaTime, gravity);
-        TextureRegion region;
         if(!movingLeft) {
-            region = walkAnimation.getKeyFrame(elapsedTime,true);
-            if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() + 2, getY(), getHeight(), getWidth())) {
-               region.flip(true, false);
+            if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() + 2, getY(), getHeight(), getWidth())){
                 movingLeft = true;
             }
             moveX(SPEED * deltaTime);
         }
-
-
         if(movingLeft) {
-            if(!map.isEnemyOnFloor(getX() - 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() - 2, getY(), getHeight(), getWidth()))  {
+            if(!map.isEnemyOnFloor(getX() - 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() - 2, getY(), getHeight(), getWidth())){
                 movingLeft = false;
             }
             moveX(-SPEED * deltaTime);
@@ -65,8 +75,8 @@ public class Enemy extends Entity {
         @Override
     public void render(SpriteBatch batch) {
         elapsedTime += Gdx.graphics.getDeltaTime();
-        TextureRegion currentFrame = walkAnimation.getKeyFrame(elapsedTime,true);
-        batch.draw(currentFrame, position.x, position.y, getWidth(), getHeight());
+//        TextureRegion currentFrame = walkAnimation.getKeyFrame(elapsedTime,true);
+        batch.draw(this.getFrame(elapsedTime), position.x, position.y, getWidth(), getHeight());
     }
 
 }
