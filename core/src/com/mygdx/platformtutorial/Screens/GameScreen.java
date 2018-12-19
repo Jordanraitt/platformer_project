@@ -158,6 +158,10 @@ public class GameScreen implements Screen {
         game.getFont().draw(game.getBatch(), "Score:" + coinsGathered, positionX, positionY);
         game.getBatch().end();
 
+        if (gameMap.doesPlayerCollideWithEndButton(playerPosX, playerPosY, gameMap.getEntities().get(0).getWidth(), gameMap.getEntities().get(0).getWidth())) {
+            game.setScreen(new WinScreen(this.game));
+        }
+
     }
 
     @Override
