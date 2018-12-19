@@ -1,6 +1,7 @@
 package com.mygdx.platformtutorial;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.platformtutorial.Screens.GameScreen;
@@ -25,7 +26,8 @@ public class PlatformerGame extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		font = new BitmapFont();
+		font = new BitmapFont(Gdx.files.internal("pixelFont/font.fnt"));
+		font.getData().setScale(0.25f);
 
 		this.setScreen(new MainMenuScreen(this));
 	}
