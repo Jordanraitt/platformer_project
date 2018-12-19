@@ -28,6 +28,7 @@ public class TiledGameMap extends GameMap {
         camera.update();
         batch.begin();
         super.render(camera, batch);
+//        entities.add(new Coin(100, 80, this));
         batch.end();
     }
 
@@ -39,7 +40,6 @@ public class TiledGameMap extends GameMap {
     @Override
     public void dispose() {
         tiledMap.dispose();
-
     }
 
     @Override
