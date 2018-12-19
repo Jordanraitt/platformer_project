@@ -38,8 +38,10 @@ public class MainMenuScreen implements Screen {
         game.getBatch().setProjectionMatrix(camera.combined);
 
         game.getBatch().begin();
-        game.getFont().draw(game.getBatch(), "Welcome! ", 100, 150);
-        game.getFont().draw(game.getBatch(), "Hit ENTER to start the game!!", 100, 100);
+        game.getFont().draw(game.getBatch(), "Welcome! ", camera.viewportWidth/2 - 50, camera.viewportHeight/2 + 75);
+        game.getFont().draw(game.getBatch(), "Hit ENTER to start the game!!", camera.viewportWidth/2 - 250, camera.viewportHeight/2 + 50);
+        game.getFont().draw(game.getBatch(), "Use directional keys or A & D to", camera.viewportWidth/2 - 290, camera.viewportHeight/2);
+        game.getFont().draw(game.getBatch(), "move, and UP, W or SPACEBAR to jump!", camera.viewportWidth/2 - 325, camera.viewportHeight/2 - 25);
         game.getBatch().end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
