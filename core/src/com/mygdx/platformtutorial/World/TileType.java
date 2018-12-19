@@ -24,11 +24,11 @@ public enum TileType {
     private String name;
     private boolean doesKill;
 
-    private TileType (int id, boolean collidable, String name) {
+    TileType (int id, boolean collidable, String name) {
         this(id, collidable, name, false);
     }
 
-    private TileType (int id, boolean collidable, String name, boolean doesKill) {
+    TileType (int id, boolean collidable, String name, boolean doesKill) {
         this.id = id;
         this.collidable = collidable;
         this.name= name;

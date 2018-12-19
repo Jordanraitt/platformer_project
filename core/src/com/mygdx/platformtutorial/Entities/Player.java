@@ -13,24 +13,15 @@ import java.awt.*;
 
 public class Player extends Entity {
 
-//    private Animation idleAnimation;
-//    private Animation jumpingAnimation;
-//    private Animation runningAnimation;
-
     public enum State { FALLING, JUMPING, STANDING, RUNNING};
     private Animation<TextureRegion> idleAnimation;
     private boolean runningRight;
     private Texture idleImage;
     private static final int SPEED = 100;
     private static final int JUMP_VELOCITY = 6;
-    private boolean isDead = false;
     private float elapsedTime;
     public State currentState;
     public State previousState;
-
-
-
-
 
 
     public Player(float x, float y, GameMap map) {
@@ -41,19 +32,6 @@ public class Player extends Entity {
         currentState = State.STANDING;
         previousState = State.STANDING;
 
-///////////////////////FRAME ANIMATIONS
-//         SINGLE LINE FRAME ANIMATION
-
-//        Array<TextureRegion> frames = new Array<TextureRegion>();
-//        for (int i = 0; i < 6; i++)
-//             frames.add(new TextureRegion(get Texture(), i * 18, 0, 35));
-//        runningAnimation = new Animation(0.1f, frames);
-//        frames.clear();
-//
-//        idleAnimation = new TextureRegion(getTexture(0,18,0,35);
-//
-//         DOUBLE LINE FRAME ANIMATION
-
         TextureRegion[][] tmpFrames = TextureRegion.split(idleImage, 18, 35);
         TextureRegion[] idleFrames = new TextureRegion[6];
         int index = 0;
@@ -63,7 +41,6 @@ public class Player extends Entity {
             }
         }
         idleAnimation = new Animation(1f/6f, idleFrames);
-///////////////////////
     }
 
     public TextureRegion getFrame(float deltaTime) {
@@ -99,16 +76,6 @@ public class Player extends Entity {
 
         moveRight(deltaTime);
 
-//        if (map.doesPlayerCollideWithEnemy(position.x, position.y, getWidth(), getHeight())){
-//            position.x = 65;
-//            position.y = 65;
-//        }
-
-//       if(map.doesPlayerCollideWithCoin(position.x, position.y, getWidth(), getHeight())){
-//           map.removeCollidedCoin(position.x, position.y, getWidth(), getHeight());
-////           map.getEntities().remove(coin);
-//       }
-
     }
 
 
@@ -116,11 +83,7 @@ public class Player extends Entity {
     @Override
     public void render(SpriteBatch batch) {
         elapsedTime += Gdx.graphics.getDeltaTime();
-//        TextureRegion currentFrame = idleAnimation.getKeyFrame(elapsedTime,true);
         batch.draw(this.getFrame(elapsedTime), position.x, position.y);
-
-//        System.out.println("position.x = " + position.x);
-//        System.out.println("position.y = " + position.y);
     }
 
 
