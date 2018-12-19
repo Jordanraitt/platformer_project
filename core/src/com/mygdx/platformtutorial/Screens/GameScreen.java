@@ -24,7 +24,6 @@ public class GameScreen implements Screen {
     GameMap gameMap;
     Texture coinImage;
     ArrayList<Rectangle> coins;
-    Rectangle playerRec;
     int coinsGathered;
 
     public GameScreen(final PlatformerGame gam) {
@@ -35,8 +34,6 @@ public class GameScreen implements Screen {
 
         float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
-
-//		player = (Player)(gameMap.getEntities().get(0));
 
 
 		camera = new OrthographicCamera();
@@ -49,7 +46,6 @@ public class GameScreen implements Screen {
         spawnCoin(120, 80);
 
         coinsGathered = 0;
-//        convertPlayer(player);
     }
 
     public void spawnCoin(int x, int y){
@@ -61,23 +57,12 @@ public class GameScreen implements Screen {
         coins.add(coin);
     }
 
-//    public void convertPlayer(Player player){
-//        Rectangle playerRect = new Rectangle();
-//        playerRect.x = (int)(player.getX());
-//        playerRect.y = (int)(player.getY());
-//        playerRect.width = player.getWidth();
-//        playerRect.height = (player.getHeight();
-//        playerRec = playerRect;
-//    }
-
-
     @Override
     public void show() {
 
     }
 
     public void render(float delta) {
-        //		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -93,21 +78,17 @@ public class GameScreen implements Screen {
 
 		if (playerPosX <= cameraHalfWidth) {
 			camera.position.x = cameraHalfWidth;
-//			camera.position.y = playerPosY;
 		}
 		if (playerPosX >= mapWidth - cameraHalfWidth){
 			camera.position.x = mapWidth - cameraHalfWidth;
-//			camera.position.y = playerPosY;
 		}
 
 		if (playerPosY <= cameraHalfHeight) {
 			camera.position.y = cameraHalfHeight;
-//			camera.position.x = playerPosX;
 
 		}
 		if (playerPosY >= (mapHeight - cameraHalfHeight)){
 			camera.position.y = mapHeight - cameraHalfHeight;
-//			camera.position.x = playerPosX;
 		}
 
 		camera.update();
@@ -120,7 +101,7 @@ public class GameScreen implements Screen {
 
         game.getBatch().begin();
         for (Rectangle coin : coins){
-            game.getBatch().draw(coinImage, coin.x, coin.y, coin.height, coin.width);
+            game.getBatch().draw(coinImage, coin.x, coin.y, coin.width,coin.height);
         }
         game.getBatch().end();
 
@@ -185,6 +166,5 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-//        coinImage.dispose();
     }
 }

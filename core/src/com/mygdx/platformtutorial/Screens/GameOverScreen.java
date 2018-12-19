@@ -31,15 +31,16 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(25f, 0, 0.2f, 1);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
             camera.update();
             game.getBatch().setProjectionMatrix(camera.combined);
 
             game.getBatch().begin();
-            game.getFont().draw(game.getBatch(), "GAME OVER ", 100, 150);
-            game.getFont().draw(game.getBatch(), "Hit ENTER to continue, or BACKSPACE to go to the Main Menu!", 100, 100);
+            game.getFont().draw(game.getBatch(), "GAME OVER ", camera.viewportWidth/2 - 50, camera.viewportHeight/2 + 75);
+            game.getFont().draw(game.getBatch(), "Hit ENTER to continue, or BACKSPACE", (camera.viewportWidth/2) - 300, camera.viewportHeight/2);
+            game.getFont().draw(game.getBatch(),"to go to the Main Menu!", camera.viewportWidth/2 - 200, camera.viewportHeight/2 - 25);
             game.getBatch().end();
 
             if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {

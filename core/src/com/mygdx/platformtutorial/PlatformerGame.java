@@ -9,8 +9,6 @@ import com.mygdx.platformtutorial.Screens.MainMenuScreen;
 
 public class PlatformerGame extends Game {
 
-//	OrthographicCamera camera;
-
 	Game game;
 	SpriteBatch batch;
 	BitmapFont font;
@@ -19,10 +17,6 @@ public class PlatformerGame extends Game {
 	public PlatformerGame() {
 		game = this;
 	}
-
-	//	GameMap gameMap;
-
-//	float deltaX, deltaY;
 
 	@Override
 	public void create () {
@@ -43,7 +37,6 @@ public class PlatformerGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-//		gameMap.dispose();
 		font.dispose();
 		super.dispose();
 	}

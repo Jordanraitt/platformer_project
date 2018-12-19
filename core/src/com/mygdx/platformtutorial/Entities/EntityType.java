@@ -3,7 +3,6 @@ package com.mygdx.platformtutorial.Entities;
 public enum EntityType {
 
     PLAYER("player", 16, 32, 25),
-    COIN("coin", 16, 16, 0),
     ENEMY("enemy", 24, 24, 25),
     ENDBUTTON("end button", 25, 10, 50);
 
@@ -11,7 +10,7 @@ public enum EntityType {
     private int width, height;
     private float weight;
 
-    private EntityType(String id, int width, int height, float weight) {
+    EntityType(String id, int width, int height, float weight) {
         this.id = id;
         this.width = width;
         this.height = height;
@@ -32,9 +31,5 @@ public enum EntityType {
 
     public float getWeight() {
         return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
     }
 }
