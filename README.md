@@ -1,17 +1,43 @@
-# platformer_project
+ # Platformer Game
 
-Goal: Create a simple 2D platformer, using Java and libGDX.
-<b> MVP </b>
-  * The game must have a character that can move left and right, and be able to jump. 
-  * The character must have three lives. When they lose all three lives the game is over.
-  * The game must have a map, with various platforms/obstacles that require the player to navigate around.
-  * The game must have enemies/environmental instances that cause damage to the player when they walk into the variables/enemies.
-  
-<b> EXTENSION </b>
-  * The player should be able to attack enemies, rather than avoiding them.
-  * The player should be able to select from multiple character types - each with their own advantages and disadvantages.
-  * Each character type should also have special abilities.
-  * The map should have coins/treasure that add up to an amount.
-  
-<b>ADVANCED EXTENSION </b>
-  * When a player runs into an enemy, then a turn-based system should display. In this view, the player and enemy should be able to take alternate turns, where they can choose to attack, defend, use special ability or run.
+**About**
+
+This game is a basic beta of a single level, with inspiration taken from classic 16-bit platformers, like Super Mario Bros. and Metroidvania. The game is written in Java using the LibGdx framework.
+
+Features of the game:
+
+* The use of multiple screens, including a Welcome, Game Over and Win screen.
+* Game has working sprite animations, for both the heroine and the enemies.
+* Enemies that move backwards and forwards, and that will kill our heroine if she touches them.
+* Spikes that will kill our heroine if she touches them.
+* Coins scattered around the map, that add up to a score as she collects them.
+
+**How To Play**
+
+Clone the repository:
+
+```
+git@github.com:nyluhem/platformer_project.git
+```
+
+Change into the directory:
+
+```
+cd platformer_project
+```
+
+Run the following whilst in the directory
+
+```
+./gradlew desktop:run
+```
+
+Alternatively, if this does not work, then you can clone the repo, and follow the guide below in order to get it working:
+
+https://libgdx.badlogicgames.com/documentation/gettingstarted/Running%20and%20Debugging.html
+
+There is not an androids folder so make sure working directory is set to /core/assets
+
+
+
+
