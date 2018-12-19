@@ -14,6 +14,7 @@ public class PlatformerGame extends Game {
 	Game game;
 	SpriteBatch batch;
 	BitmapFont font;
+	BitmapFont font2;
 
 	public PlatformerGame() {
 		game = this;
@@ -27,6 +28,7 @@ public class PlatformerGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		font = new BitmapFont(Gdx.files.internal("pixelFont/font.fnt"));
+		font2 = new BitmapFont();
 		font.getData().setScale(0.25f);
 
 		this.setScreen(new MainMenuScreen(this));
@@ -52,5 +54,9 @@ public class PlatformerGame extends Game {
 
 	public BitmapFont getFont() {
 		return this.font;
+	}
+
+	public BitmapFont getFont2(){
+		return this.font2;
 	}
 }

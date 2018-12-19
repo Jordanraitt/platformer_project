@@ -155,7 +155,7 @@ public class GameScreen implements Screen {
         }
 
         game.getBatch().begin();
-        game.getFont().draw(game.getBatch(), "Score:" + coinsGathered, positionX, positionY);
+        game.getFont2().draw(game.getBatch(), "Score: " + coinsGathered, positionX, positionY);
         game.getBatch().end();
 
         if (gameMap.doesPlayerCollideWithEndButton(playerPosX, playerPosY, gameMap.getEntities().get(0).getWidth(), gameMap.getEntities().get(0).getWidth())) {
