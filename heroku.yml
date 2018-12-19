@@ -1,0 +1,8 @@
+setup:
+  config:
+    GRADLE_TASK: build
+build:
+  languages:
+    - gradle
+run:
+  web: java -jar desktop-1.0.jar

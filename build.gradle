@@ -58,7 +58,11 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         
     }
+
 }
+
+//task stage(dependsOn: ['build', 'clean'])
+//build.mustRunAfter clean
 
 tasks.eclipse.doLast {
     delete ".project"

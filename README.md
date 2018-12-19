@@ -36,7 +36,7 @@ Alternatively, if this does not work, then you can clone the repo, and follow th
 
 https://libgdx.badlogicgames.com/documentation/gettingstarted/Running%20and%20Debugging.html
 
-There is not an androids folder so make sure working directory is set to /core/assets
+There is not an androids folder so make sure working directory is set to /core/assets.
 
 
 
