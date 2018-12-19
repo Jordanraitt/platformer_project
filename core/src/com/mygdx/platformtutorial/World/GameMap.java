@@ -21,7 +21,6 @@ public abstract class GameMap {
           entities.add(new Enemy(65, 290, this));
           entities.add(new Enemy(1480, 256, this));
           entities.add(new Enemy(1086, 352, this));
-          entities.add(new Enemy(186, 960, this));
           entities.add(new Enemy(601, 992, this));
           entities.add(new Enemy(600, 1216, this));
           entities.add(new Enemy(629, 864, this));

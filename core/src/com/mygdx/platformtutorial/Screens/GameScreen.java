@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.platformtutorial.Entities.Player;
 import com.mygdx.platformtutorial.PlatformerGame;
+import com.mygdx.platformtutorial.World.CoinSpawn;
 import com.mygdx.platformtutorial.World.GameMap;
 import com.mygdx.platformtutorial.World.TileType;
 import com.mygdx.platformtutorial.World.TiledGameMap;
@@ -23,14 +24,13 @@ public class GameScreen implements Screen {
     OrthographicCamera camera;
     GameMap gameMap;
     Texture coinImage;
-    ArrayList<Rectangle> coins;
     int coinsGathered;
+    CoinSpawn coinSpawn;
 
     public GameScreen(final PlatformerGame gam) {
         this.game = gam;
 
         coinImage = new Texture(Gdx.files.internal("coin.png"));
-        coins = new ArrayList<Rectangle>();
 
         float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -41,21 +41,16 @@ public class GameScreen implements Screen {
 		camera.update();
 
 		gameMap = new TiledGameMap();
-        spawnCoin(180, 80);
-        spawnCoin(100, 80);
-        spawnCoin(120, 80);
+
 
         coinsGathered = 0;
+
+        coinSpawn = new CoinSpawn();
+        coinSpawn.spawnCoins();
+
     }
 
-    public void spawnCoin(int x, int y){
-        Rectangle coin = new Rectangle();
-        coin.x = x;
-        coin.y = y;
-        coin.width = 16;
-        coin.height = 16;
-        coins.add(coin);
-    }
+
 
     @Override
     public void show() {
@@ -100,12 +95,12 @@ public class GameScreen implements Screen {
         }
 
         game.getBatch().begin();
-        for (Rectangle coin : coins){
+        for (Rectangle coin : coinSpawn.getCoins()){
             game.getBatch().draw(coinImage, coin.x, coin.y, coin.width,coin.height);
         }
         game.getBatch().end();
 
-        Iterator<Rectangle> iter = coins.iterator();
+        Iterator<Rectangle> iter = coinSpawn.getCoins().iterator();
         while (iter.hasNext()) {
             Rectangle coin = iter.next();
             coin.y += 0 * Gdx.graphics.getDeltaTime();
