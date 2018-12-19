@@ -11,7 +11,7 @@ public class Enemy extends Entity {
 
     private static final int SPEED = 50;
     private boolean movingLeft = false;
-    private boolean canKill = true;
+//    private boolean canKill = true;
 
     Texture image;
 
