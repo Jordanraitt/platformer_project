@@ -41,9 +41,11 @@ public class Enemy extends Entity {
     @Override
     public void update(float deltaTime, float gravity) {
         super.update(deltaTime, gravity);
-
+        TextureRegion region;
         if(!movingLeft) {
+            region = walkAnimation.getKeyFrame(elapsedTime,true);
             if (!map.isEnemyOnFloor(getX() + 2, getY() - 32, getHeight(), getWidth()) || map.doesRectCollideWithMap(getX() + 2, getY(), getHeight(), getWidth())) {
+               region.flip(true, false);
                 movingLeft = true;
             }
             moveX(SPEED * deltaTime);
