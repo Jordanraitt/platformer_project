@@ -1,6 +1,6 @@
  # Platformer Game
 
-**About**
+## About
 
 This game is a basic beta of a single level, with inspiration taken from classic 16-bit platformers, like Super Mario Bros. and Metroidvania. The game is written in Java using the LibGdx framework.
 
@@ -12,7 +12,7 @@ Features of the game:
 * Spikes that will kill our heroine if she touches them.
 * Coins scattered around the map, that add up to a score as she collects them.
 
-##How To Play
+## How To Play
 
 Clone the repository:
 
@@ -38,7 +38,7 @@ https://libgdx.badlogicgames.com/documentation/gettingstarted/Running%20and%20De
 
 There is not an androids folder so make sure working directory is set to /core/assets.
 
-##Resources
+## Resources
 
 * https://www.pixilart.com/
 
