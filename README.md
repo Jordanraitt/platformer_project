@@ -12,7 +12,7 @@ Features of the game:
 * Spikes that will kill our heroine if she touches them.
 * Coins scattered around the map, that add up to a score as she collects them.
 
-**How To Play**
+##How To Play
 
 Clone the repository:
 
@@ -37,6 +37,26 @@ Alternatively, if this does not work, then you can clone the repo, and follow th
 https://libgdx.badlogicgames.com/documentation/gettingstarted/Running%20and%20Debugging.html
 
 There is not an androids folder so make sure working directory is set to /core/assets.
+
+##Resources
+
+* https://www.pixilart.com/
+
+* https://www.mapeditor.org/
+
+* https://libgdx.badlogicgames.com/documentation/
+
+* https://github.com/libgdx/libgdx/wiki
+
+* Building the small bucket game:
+    https://github.com/libgdx/libgdx/wiki/A-simple-game
+
+* The tutorial we followed:
+    https://www.youtube.com/watch?v=MAFawG6lEkw
+
+
+
+
 
 
 
